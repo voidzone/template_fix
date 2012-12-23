@@ -3,7 +3,7 @@
 	Name: Thesis 2 Template Fix
 	Author: Tim Milligan
 	Description: Template Fix box for Plugins that use Custom Templates
-	Version: 1.0
+	Version: 1.2
 	Class: t2_template_fix
 */
 
@@ -13,12 +13,12 @@ class t2_template_fix extends thesis_box {
 	}
 	
 	public function construct() {
-		add_action('thesis_init_post_meta', 'template_fix');  
+		add_action('thesis_init_post_meta', array($this, 'template_fix'));  
 	
 	}
 	
-	function template_fix() {
-		apply_filters('template_include');
+	public function template_fix() {
+		apply_filters('template_include', null);
 	}
 	
 	public function html($args = false) {
